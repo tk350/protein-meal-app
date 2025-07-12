@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://protein-meal.com
+
+# Sitemaps
+Sitemap: https://protein-meal.com/sitemap.xml
