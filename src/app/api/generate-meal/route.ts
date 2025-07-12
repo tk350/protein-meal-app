@@ -1,4 +1,4 @@
-import { NextRequest } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import OpenAI from "openai";
 
 if (!process.env.OPENAI_API_KEY) {
@@ -36,11 +36,17 @@ export async function POST(req: NextRequest) {
       typeof fat !== "number" ||
       typeof carbs !== "number"
     ) {
-      return new Response("Invalid data types. All values must be numbers.", { status: 400 });
+      return NextResponse.json(
+        { error: "Invalid data types. All values must be numbers." },
+        { status: 400 }
+      );
     }
 
     if (!validateNutrition(calories, protein, fat, carbs)) {
-      return new Response("Nutritional values are out of reasonable range.", { status: 400 });
+      return NextResponse.json(
+        { error: "Nutritional values are out of reasonable range." },
+        { status: 400 }
+      );
     }
 
     const prompt = `
@@ -109,14 +115,17 @@ No explanations or JSON. Format strictly as shown above.
     const result = response.choices[0]?.message?.content || "";
     console.log("📄 GPT response (text):", result);
 
-    return new Response(result, {
+    return new NextResponse(result, {
       status: 200,
       headers: {
         "Content-Type": "text/plain; charset=utf-8",
       },
     });
-  } catch (err: any) {
+  } catch (err: unknown) {
     console.error("💥 API error:", err);
-    return new Response("Internal server error occurred.", { status: 500 });
+    return NextResponse.json(
+      { error: "Internal server error occurred." },
+      { status: 500 }
+    );
   }
 }
