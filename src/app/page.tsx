@@ -1,4 +1,3 @@
-// src/app/page.tsx
 "use client";
 
 import { useState } from "react";
@@ -34,8 +33,8 @@ export default function Home() {
           タンパク質・カロリー・PFCバランス計算ツール
         </h1>
         <p className="text-sm text-gray-700 mb-6">
-          年齢・性別・体重・身長を入力するだけで，あなたに必要なタンパク質量とカロリーやPFCバランスを自動で計算します。
-          AIが食事メニュー，献立を提案し，筋トレ・美容・ダイエットなど目的に応じた栄養管理をサポートします。
+          年齢・性別・体重・身長を入力するだけで、あなたに必要なタンパク質量とカロリーやPFCバランスを自動で計算します。
+          AIが食事メニュー、献立を提案し、筋トレ・美容・ダイエットなど目的に応じた栄養管理をサポートします。
         </p>
 
         <ProteinCalculatorForm
