@@ -20,7 +20,6 @@ export default function ProteinCalculatorForm({ onCalculated }: Props) {
   const [goal, setGoal] = useState<"cut" | "maintain" | "bulk" | "beauty">("maintain");
   const [type, setType] = useState("strength");
   const [isTrainingDay, setIsTrainingDay] = useState("yes");
-  const [proteinPerScoop, setProteinPerScoop] = useState("20");
 
   const [showExplanation, setShowExplanation] = useState(false);
 
